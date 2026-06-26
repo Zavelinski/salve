@@ -9,6 +9,46 @@ A [Claude Code](https://claude.com/claude-code) skill that ships and persists yo
 
 Saying `salve` is your explicit OK to merge to the main branch and deploy — that one word is the approval, so the agent stops asking and just ships.
 
+## Prerequisites
+
+Claude Code with `/plugin` support (v2.x+) and a shell if you use the manual fallback.
+
+## Install
+
+### Option 1 — Claude Code plugin marketplace (recommended)
+
+```bash
+/plugin marketplace add Zavelinski/claude-code-skills
+/plugin install salve@claude-code-skills
+```
+
+Registered hooks (if any) install through the Claude Code consent UI, with no manual edit to `~/.claude/settings.json`.
+
+### Option 2 — Manual fallback (run it yourself)
+
+> **Security note.** This script mutates `~/.claude/settings.json` directly. Claude Code auto-mode blocks it because a third-party `UserPromptSubmit` hook that injects text into every prompt is a known risk vector. The script is benign and local-only (no network), but you must review and run it yourself. Prefer Option 1.
+
+```bash
+git clone https://github.com/Zavelinski/claude-code-salve.git
+cd claude-code-salve
+bash install.sh        # macOS / Linux
+.\install.ps1          # Windows (PowerShell)
+```
+
+## Uninstall
+
+```bash
+/plugin uninstall salve@claude-code-skills    # Option 1
+bash uninstall.sh                                # Option 2 (or uninstall.ps1 on Windows)
+```
+
+## Update
+
+```bash
+/plugin marketplace update claude-code-skills    # Option 1
+# Option 2: pull the latest commit and re-run the manual fallback.
+```
+
 ## The flow
 
 0. **Pre-flight** — `git status`, find the main branch, and if code changed, **run the tests first** (red = stop, never ship broken).
@@ -30,27 +70,6 @@ Saying `salve` is your explicit OK to merge to the main branch and deploy — th
 - Secrets are never committed (`.env` stays gitignored).
 - Merge-to-main and deploy happen **only** because you said `salve`. Anything more dangerous (rotating secrets, destructive migrations) is still flagged as an escalation.
 
-## Install
-
-```bash
-git clone https://github.com/Zavelinski/claude-code-salve.git
-cd salve
-```
-
-**macOS / Linux**
-```bash
-bash install.sh
-```
-
-**Windows (PowerShell)**
-```powershell
-.\install.ps1
-```
-
-Skill-only install (no hooks, no `settings.json` changes). Restart Claude Code, then say **`salve`** when you want to ship.
-
-> Configure once per project: tell it your main branch, deploy target (or "none"), and health URL. Defaults are sensible (`main`, auto-deploy-on-push, `/health`).
-
 ## Português
 
 A PT-BR version lives in [`variants/pt-br/`](variants/pt-br/). After installing, copy it over:
@@ -59,26 +78,10 @@ A PT-BR version lives in [`variants/pt-br/`](variants/pt-br/). After installing,
 cp variants/pt-br/SKILL.md ~/.claude/skills/salve/SKILL.md
 ```
 
-## Uninstall
-
-```bash
-bash uninstall.sh      # macOS / Linux
-```
-```powershell
-.\uninstall.ps1        # Windows
-```
-
 ## License
 
 MIT. See [LICENSE](LICENSE). Original work.
 
 ---
-
-## Install as a Claude Code plugin
-
-```bash
-/plugin marketplace add Zavelinski/claude-code-skills
-/plugin install salve@claude-code-skills
-```
 
 Part of the **[claude-code-skills](https://github.com/Zavelinski/claude-code-skills)** collection: a suite of focused, original Claude Code skills.
