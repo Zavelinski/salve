@@ -1,0 +1,10 @@
+{
+  "name": "salve",
+  "description": "Ship and persist your work in one word: persist context, commit, push, PR+merge to main, deploy, ff-update local, report evidence. EN + pt-br.",
+  "version": "1.0.0",
+  "author": { "name": "Zavelinski" },
+  "homepage": "https://github.com/Zavelinski/claude-code-salve",
+  "repository": "https://github.com/Zavelinski/claude-code-salve",
+  "license": "MIT",
+  "keywords": ["git","deployment","ci-cd","workflow"]
+}

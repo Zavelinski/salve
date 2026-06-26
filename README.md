@@ -1,8 +1,8 @@
 # salve for Claude Code
 
-[![License: MIT](https://img.shields.io/github/license/Zavelinski/salve)](LICENSE)
-[![Stars](https://img.shields.io/github/stars/Zavelinski/salve?style=flat)](https://github.com/Zavelinski/salve/stargazers)
-[![Last commit](https://img.shields.io/github/last-commit/Zavelinski/salve)](https://github.com/Zavelinski/salve/commits)
+[![License: MIT](https://img.shields.io/github/license/Zavelinski/claude-code-salve)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/Zavelinski/claude-code-salve?style=flat)](https://github.com/Zavelinski/claude-code-salve/stargazers)
+[![Last commit](https://img.shields.io/github/last-commit/Zavelinski/claude-code-salve)](https://github.com/Zavelinski/claude-code-salve/commits)
 [![Claude Code skill](https://img.shields.io/badge/Claude%20Code-skill-8A2BE2)](https://claude.com/claude-code)
 
 A [Claude Code](https://claude.com/claude-code) skill that ships and persists your work in one word. Say **`salve`** and it runs the whole close-out: persist context, commit, push, open and merge a PR to your main branch, trigger/confirm the deploy, fast-forward your local checkout, and report evidence (commit/PR/merge SHAs, deploy state, rollback).
@@ -33,7 +33,7 @@ Saying `salve` is your explicit OK to merge to the main branch and deploy — th
 ## Install
 
 ```bash
-git clone https://github.com/Zavelinski/salve.git
+git clone https://github.com/Zavelinski/claude-code-salve.git
 cd salve
 ```
 
@@ -71,3 +71,14 @@ bash uninstall.sh      # macOS / Linux
 ## License
 
 MIT. See [LICENSE](LICENSE). Original work.
+
+---
+
+## Install as a Claude Code plugin
+
+```bash
+/plugin marketplace add Zavelinski/claude-code-skills
+/plugin install salve@claude-code-skills
+```
+
+Part of the **[claude-code-skills](https://github.com/Zavelinski/claude-code-skills)** collection: a suite of focused, original Claude Code skills.
